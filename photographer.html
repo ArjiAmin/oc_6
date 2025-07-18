@@ -1,37 +1,135 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+<html lang="fr">
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fisheye - Portfolio du photographe">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Fisheye - Photographe</title>
+</head>
+
+<body>
+  <header role="banner">
+    <a href="index.html" aria-label="Retour à l'accueil Fisheye">
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye - Accueil" />
+    </a>
+  </header>
+  <main id="main" role="main">
+    <section class="photograph-header" aria-label="Informations du photographe">
+      <div class="photographer-info">
+        <h1 id="photographer-name"></h1>
+        <p class="photographer-location"></p>
+        <p class="photographer-tagline"></p>
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+      <button class="contact_button" onclick="displayModal()" aria-label="Contacter le photographe">
+        Contactez-moi
+      </button>
+      <div class="photographer-portrait-container">
+        <img id="photographer-portrait" src="" alt="" />
+      </div>
+    </section>
+
+    <section class="media-section" aria-label="Portfolio du photographe">
+      <div class="sort-container">
+        <label for="sort-select" class="sort-label">Trier par</label>
+        <select id="sort-select" class="sort-select" aria-label="Trier les médias par">
+          <option value="popularity">Popularité</option>
+          <option value="date">Date</option>
+          <option value="title">Titre</option>
+        </select>
+      </div>
+      <div class="media-gallery" role="region" aria-label="Galerie de médias">
+      </div>
+
+      <!-- Template for articles -->
+      <template id="media-item-template">
+        <article class="media-item" role="article">
+          <div class="media-container"></div>
+          <div class="media-info">
+            <h3 class="media-title"></h3>
+            <div class="likes-container">
+              <span class="likes-count"></span>
+              <button class="heart-icon" aria-label="">
+                <img src="assets/icons/heart.svg" alt="" class="heart-svg">
+              </button>
+            </div>
+          </div>
+        </article>
+      </template>
+    </section>
+
+    <div class="photographer-stats" role="complementary" aria-label="Statistiques du photographe">
+      <span class="total-likes" aria-label="Total des likes"></span>
+      <span class="photographer-price" aria-label="Prix par jour"></span>
+    </div>
+  </main>
+  <div id="contact_modal" class="contact-modal-overlay" role="dialog" aria-labelledby="contact-modal-title" aria-hidden="true">
+    <div class="contact-modal-container">
+      <button class="contact-modal-close" aria-label="Close Contact form">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h1 id="contact-modal-title">Contactez-moi</h1>
+
+      <form class="contact-form" novalidate>
+        <div class="form-group">
+          <label for="first-name" id="first-name-label">Prénom</label>
+          <input type="text" id="first-name" name="firstName" aria-labelledby="first-name-label" required>
+        </div>
+
+        <div class="form-group">
+          <label for="last-name" id="last-name-label">Nom</label>
+          <input type="text" id="last-name" name="lastName" aria-labelledby="last-name-label" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email" id="email-label">Email</label>
+          <input type="email" id="email" name="email" aria-labelledby="email-label" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message" id="message-label">Votre message</label>
+          <textarea id="message" name="message" aria-labelledby="message-label" rows="6" required></textarea>
+        </div>
+
+        <button type="submit" class="contact-submit-button" aria-label="Send">Envoyer</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Media Modal -->
+  <div id="media_modal" class="media-modal-overlay" role="dialog" aria-label="image closeup view" aria-hidden="true">
+    <div class="media-modal-container">
+      <button class="media-modal-close" aria-label="Close dialog">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <button class="media-modal-prev" aria-label="Previous image">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+      </button>
+
+      <div class="media-modal-content">
+        <img id="modal-image" src="" alt="" style="display: none;" />
+        <video id="modal-video" controls style="display: none;">
+          <source src="" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <button class="media-modal-next" aria-label="Next image">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      </button>
+
+      <div class="media-modal-title"></div>
+    </div>
+  </div>
+  <script src="scripts/pages/photographer.js"></script>
+  <script src="scripts/utils/contactForm.js"></script>
+</body>
+
 </html>

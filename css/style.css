@@ -3,8 +3,9 @@
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+    line-height: 1.6;
+    color: #333;
 }
-
 
 header {
     display: flex;
@@ -26,9 +27,10 @@ h1 {
 
 .photographer_section {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 70px;
-    margin-top: 100px;
+    margin: 100px 50px;
+    padding: 0 50px;
 }
 
 .photographer_section article {
@@ -37,14 +39,91 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
+    max-width: 350px;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+.photographer-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.photographer_section article img {
+.photographer-link:hover,
+.photographer-link:focus {
+    outline: 2px solid #901C1C;
+    outline-offset: 4px;
+    border-radius: 10px;
+}
+
+.photographer-portrait {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.photographer-name {
+    color: #D3573C;
+    font-size: 36px;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.photographer_section article .location {
+    margin: 10px 0 5px 0;
+}
+
+.photographer_section article .tagline {
+    margin: 5px 0;
+}
+
+.photographer_section article .price {
+    margin: 5px 0 0 0;
+}
+
+@media (max-width: 1024px) {
+    .photographer_section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+        margin: 80px 30px;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .photographer_section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin: 60px 20px;
+        padding: 0 10px;
+    }
+
+    .photographer-portrait {
+        height: 150px;
+        width: 150px;
+    }
+
+    .photographer-name {
+        font-size: 28px;
+    }
+
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .logo {
+        margin: 0 0 20px 0;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 24px;
+    }
 }
