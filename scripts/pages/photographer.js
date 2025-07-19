@@ -198,15 +198,15 @@ function sortMedia(media, sortBy) {
     const sortedMedia = [...media];
 
     switch (sortBy) {
-        case 'popularity':
-            return sortedMedia.sort((a, b) => b.likes - a.likes);
-        case 'date':
-            return sortedMedia.sort((a, b) => new Date(b.date) - new Date(a.date));
-        case 'title':
-            // TODO: asc ou desc ?
-            return sortedMedia.sort((a, b) => a.title.localeCompare(b.title));
-        default:
-            return sortedMedia;
+    case 'popularity':
+        return sortedMedia.sort((a, b) => b.likes - a.likes);
+    case 'date':
+        return sortedMedia.sort((a, b) => new Date(b.date) - new Date(a.date));
+    case 'title':
+        // TODO: asc ou desc ?
+        return sortedMedia.sort((a, b) => a.title.localeCompare(b.title));
+    default:
+        return sortedMedia;
     }
 }
 
@@ -326,15 +326,15 @@ function setupModalEventListeners() {
     document.addEventListener('keydown', (e) => {
         if (modal.style.display === 'flex') {
             switch (e.key) {
-                case 'Escape':
-                    closeMediaModal();
-                    break;
-                case 'ArrowLeft':
-                    prevModalMedia();
-                    break;
-                case 'ArrowRight':
-                    nextModalMedia();
-                    break;
+            case 'Escape':
+                closeMediaModal();
+                break;
+            case 'ArrowLeft':
+                prevModalMedia();
+                break;
+            case 'ArrowRight':
+                nextModalMedia();
+                break;
             }
         }
     });

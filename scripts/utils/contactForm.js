@@ -1,6 +1,6 @@
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "flex";
+    const modal = document.getElementById('contact_modal');
+    modal.style.display = 'flex';
     modal.setAttribute('aria-hidden', 'false');
 
     const photographerName = document.getElementById('photographer-name')?.textContent || 'le photographe';
@@ -20,8 +20,8 @@ function displayModal() {
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
+    const modal = document.getElementById('contact_modal');
+    modal.style.display = 'none';
     modal.setAttribute('aria-hidden', 'true');
 
     document.body.style.overflow = '';
@@ -46,7 +46,7 @@ function handleModalKeydown(event) {
 }
 
 function trapFocus(event) {
-    const modal = document.getElementById("contact_modal");
+    const modal = document.getElementById('contact_modal');
     const focusableElements = modal.querySelectorAll(
         'button, input, textarea, [tabindex]:not([tabindex="-1"])'
     );
@@ -67,7 +67,7 @@ function trapFocus(event) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById("contact_modal");
+    const modal = document.getElementById('contact_modal');
     const closeButton = modal.querySelector('.contact-modal-close');
     const form = modal.querySelector('.contact-form');
 

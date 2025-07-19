@@ -1,0 +1,12 @@
+{
+  "name": "fisheye-project",
+  "version": "1.0.0",
+  "description": "FishEye - Plateforme de photographes",
+  "scripts": {
+    "lint": "eslint scripts/ --ext .js",
+    "lint:fix": "eslint scripts/ --ext .js --fix"
+  },
+  "devDependencies": {
+    "eslint": "^9.31.0"
+  }
+}
